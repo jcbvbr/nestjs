@@ -1,0 +1,11 @@
+{
+    "type": "mysql",
+    "host": "localhost",
+    "port":  "32803",
+    "username": "dbuser",
+    "password": "dbuserpassword",
+    "database": "dbescola",
+    "synchronize": true,
+    "logging": true,
+    "entities": ["dist/**/*.entity{.ts,.js}"]
+}
