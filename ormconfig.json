@@ -1,7 +1,7 @@
 {
     "type": "mysql",
     "host": "localhost",
-    "port":  "32803",
+    "port":  "32770",
     "username": "dbuser",
     "password": "dbuserpassword",
     "database": "dbescola",
