@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { TurmaEntity } from 'src/turma/turma.entity';
 
 @Entity('curso')
 export class CursoEntity {
@@ -17,4 +18,7 @@ export class CursoEntity {
 
     @Column({ type: 'double' })
     preco: number;
+
+    @OneToMany(type => TurmaEntity, turma => turma.curso)
+    turmas: TurmaEntity[];
 }

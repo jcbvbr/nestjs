@@ -8,5 +8,6 @@ import { TurmaEntity } from './turma.entity';
   imports: [TypeOrmModule.forFeature([TurmaEntity])],
   providers: [TurmaService],
   controllers: [TurmaController],
+  exports: [TurmaService],
 })
 export class TurmaModule {}

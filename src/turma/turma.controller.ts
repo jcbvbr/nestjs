@@ -25,7 +25,7 @@ export class TurmaController {
     }
 
     @Put(':id')
-    update(@Param('id') id: string, @Body() data: Partial<TurmaDto>) {
+    update(@Body() data: Partial<TurmaDto>, @Param('id') id: string) {
         return this.turmaService.update(id, data);
     }
 

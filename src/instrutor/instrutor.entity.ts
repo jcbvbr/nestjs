@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { TurmaEntity } from 'src/turma/turma.entity';
 
 @Entity('instrutor')
 export class InstrutorEntity {
@@ -17,4 +18,7 @@ export class InstrutorEntity {
 
     @Column({ type: 'double' })
     valorHora: number;
+
+    @OneToMany(type => TurmaEntity, turma => turma.instrutor)
+    turmas: TurmaEntity[];
 }

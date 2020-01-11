@@ -1,8 +1,18 @@
-export interface CursoDTO {
+import { ApiProperty } from '@nestjs/swagger';
 
-    id: string;
+export class CursoDTO {
+    @ApiProperty()
+    id?: string;
+
+    @ApiProperty()
     name: string;
+
+    @ApiProperty()
     requisito: string;
+
+    @ApiProperty()
     cargaHoraria: number;
+
+    @ApiProperty()
     preco: number;
 }

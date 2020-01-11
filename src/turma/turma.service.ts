@@ -6,8 +6,10 @@ import { TurmaDto } from './turma.dto';
 
 @Injectable()
 export class TurmaService {
-    constructor(@InjectRepository(TurmaEntity)
-    private readonly turmaRepositorio: Repository<TurmaEntity>) {}
+    constructor(
+        @InjectRepository(TurmaEntity)
+        private readonly turmaRepositorio: Repository<TurmaEntity>,
+    ) {}
 
     async get() {
         return await this.turmaRepositorio.find();

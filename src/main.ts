@@ -11,9 +11,8 @@ async function bootstrap() {
 
   const options = new DocumentBuilder()
     .setTitle('API ESCOLA')
-    .setDescription('API ESCOLA')
+    .setDescription('Sistema Escolar')
     .setVersion('1.0')
-    .addTag('Escola')
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);

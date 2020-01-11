@@ -3,7 +3,7 @@ import { CursoService } from './curso.service';
 import { CursoDTO } from './curso.dto';
 import { ApiTags } from '@nestjs/swagger';
 
-@ApiTags('curso')
+@ApiTags('Curso')
 @Controller('curso')
 export class CursoController {
     constructor(private cursoService: CursoService) {}
@@ -24,7 +24,7 @@ export class CursoController {
     }
 
     @Put(':id')
-    updateCurso(@Param('id') id: string, @Body() data: Partial<CursoDTO>) {
+    updateCurso(@Body() data: Partial<CursoDTO>, @Param('id') id: string) {
         return this.cursoService.updateCurso(id, data);
     }
 

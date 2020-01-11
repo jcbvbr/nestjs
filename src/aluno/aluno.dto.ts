@@ -4,9 +4,7 @@ export class AlunoDto {
     @ApiProperty()
     id?: string;
 
-    @ApiProperty({
-        description: 'Cpf do aluno',
-    })
+    @ApiProperty()
     cpf: string;
 
     @ApiProperty()
@@ -20,4 +18,5 @@ export class AlunoDto {
 
     @ApiProperty()
     dataNascimento: Date;
+
 }

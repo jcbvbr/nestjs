@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { MatriculaEntity } from 'src/matricula/matricula.entity';
 
 @Entity('aluno')
 export class AlunoEntity {
@@ -20,4 +21,7 @@ export class AlunoEntity {
 
     @Column({ type: 'date' })
     dataNascimento: Date;
+
+    @OneToMany(type => MatriculaEntity, matricula => matricula.aluno)
+    matriculas: MatriculaEntity[];
 }

@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne } from 'typeorm';
 import { InstrutorEntity } from 'src/instrutor/instrutor.entity';
 import { CursoEntity } from 'src/curso/curso.entity';
+import { MatriculaEntity } from 'src/matricula/matricula.entity';
 
 @Entity('turma')
 export class TurmaEntity {
@@ -22,9 +23,12 @@ export class TurmaEntity {
     @Column({length: 36})
     cursoId: string;
 
-    @ManyToOne(type => InstrutorEntity, instrutor => instrutor)
+    @ManyToOne(type => InstrutorEntity, instrutor => instrutor.turmas)
     instrutor: InstrutorEntity;
 
-    @ManyToOne(type => CursoEntity, curso => curso)
+    @ManyToOne(type => CursoEntity, curso => curso.turmas)
     curso: CursoEntity;
+
+    @OneToMany(type => MatriculaEntity, matricula => matricula.turma)
+    matriculas: MatriculaEntity[];
 }

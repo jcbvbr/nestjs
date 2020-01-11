@@ -3,7 +3,7 @@ import { AlunoService } from './aluno.service';
 import { AlunoDto } from './aluno.dto';
 import { ApiTags, ApiResponse } from '@nestjs/swagger';
 
-@ApiTags('aluno')
+@ApiTags('Aluno')
 @Controller('aluno')
 export class AlunoController {
     constructor(private alunoService: AlunoService) {}

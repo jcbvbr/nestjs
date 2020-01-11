@@ -1,5 +1,5 @@
-import { InstrutorEntity } from 'src/instrutor/instrutor.entity';
 import { ApiProperty } from '@nestjs/swagger';
+import { InstrutorDto } from 'src/instrutor/instrutor.dto';
 
 export class TurmaDto {
     @ApiProperty()
@@ -14,5 +14,5 @@ export class TurmaDto {
     @ApiProperty()
     cargaHoraria: number;
 
-    instrutor?: InstrutorEntity;
+    instrutor?: InstrutorDto;
 }
