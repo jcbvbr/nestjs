@@ -1,13 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Entity, Column, ManyToOne} from 'typeorm';
 import { TurmaEntity } from 'src/turma/turma.entity';
-import { TurmaService } from 'src/turma/turma.service';
 import { AlunoEntity } from 'src/aluno/aluno.entity';
+import { BaseEntity } from 'src/base/BaseEntity';
 
 @Entity('matricula')
-export class MatriculaEntity {
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
-
+export class MatriculaEntity extends BaseEntity {
     @Column({type: 'date'})
     dataMatricula: Date;
 

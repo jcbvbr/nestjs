@@ -1,11 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Entity, Column, OneToMany } from 'typeorm';
 import { MatriculaEntity } from 'src/matricula/matricula.entity';
+import { BaseEntity } from 'src/base/BaseEntity';
 
 @Entity('aluno')
-export class AlunoEntity {
-
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+export class AlunoEntity extends BaseEntity {
 
     @Column({type: 'char', length: 11})
     cpf: string;

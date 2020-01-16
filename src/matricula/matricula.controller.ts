@@ -18,6 +18,16 @@ export class MatriculaController {
         return this.matriculaService.getById(id);
     }
 
+    @Get(':id/turma')
+    getWithTurma(@Param('id') id: string) {
+        return this.matriculaService.getWithTurma(id);
+    }
+
+    @Get(':id/aluno')
+    getWithAluno(@Param('id') id: string) {
+        return this.matriculaService.getWithAluno(id);
+    }
+
     @Post()
     create(@Body() data: MatriculaDto) {
         return this.matriculaService.create(data);

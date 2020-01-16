@@ -1,11 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import { Entity, Column, OneToMany } from 'typeorm';
 import { TurmaEntity } from 'src/turma/turma.entity';
+import { BaseEntity } from 'src/base/BaseEntity';
 
 @Entity('instrutor')
-export class InstrutorEntity {
-
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+export class InstrutorEntity extends BaseEntity {
 
     @Column({ length: 50 })
     nome: string;

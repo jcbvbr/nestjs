@@ -18,6 +18,28 @@ export class MatriculaService {
         return this.matriculaRepository.findOne({ id });
     }
 
+    async getWithTurma(idMatricula: string) {
+        return await this.matriculaRepository
+            .createQueryBuilder('matricula')
+            .leftJoin('matricula.turma', 'turma')
+            .select(['matricula.id', 'matricula.dataMatricula'])
+            .addSelect(['turma.id', 'turma.dataInicio', 'turma.DataFinal', 'turma.cargaHoraria'])
+            .where({ id: idMatricula })
+            .getOne();
+    }
+
+    async getWithAluno(idMatricula: string) {
+        return await this.matriculaRepository.find({
+            where: { id: idMatricula },
+            join: {
+                alias: 'matricula',
+                leftJoinAndSelect: {
+                    aluno: 'matricula.aluno',
+                },
+            },
+        });
+    }
+
     async create(data: MatriculaDto) {
         const turma = await this.matriculaRepository.create(data);
         await this.matriculaRepository.save(turma);
