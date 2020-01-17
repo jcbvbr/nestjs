@@ -1,7 +1,8 @@
-import { Controller, Get, Post, Body, Param, Put, Delete, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put, Delete, Query, UsePipes } from '@nestjs/common';
 import { ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { TurmaService } from './turma.service';
 import { TurmaDto } from './turma.dto';
+import { ValidationPipe } from 'src/shared/validation.pipe';
 
 @ApiTags('Turma')
 @Controller('turma')
@@ -15,6 +16,7 @@ export class TurmaController {
     }
 
     @Post()
+    @UsePipes(new ValidationPipe())
     @ApiOperation( { description: 'Cria uma nova turma.' } )
     @ApiResponse({ status: 201, description: 'Sucesso na inclusão de uma nova turma'})
     create(@Body() data: TurmaDto) {

@@ -1,9 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TurmaEntity } from './turma.entity';
 import { Repository } from 'typeorm';
 import { TurmaDto } from './turma.dto';
 import {paginate, Pagination, IPaginationOptions} from 'nestjs-typeorm-paginate';
+import { throws } from 'assert';
 
 @Injectable()
 export class TurmaService {
@@ -61,16 +62,30 @@ export class TurmaService {
     }
 
     async getById(id: string) {
-        return await this.turmaRepositorio.findOne({ id });
+        const turma = await this.turmaRepositorio.findOne({ id });
+        if (!turma) {
+            throw new HttpException('Not found', HttpStatus.NOT_FOUND);
+        }
+
+        return turma;
     }
 
     async update(id: string, data: Partial<TurmaDto>) {
+        const turma = await this.turmaRepositorio.findOne({ id });
+        if (!turma) {
+            throw new HttpException('Not found', HttpStatus.NOT_FOUND);
+        }
+
         await this.turmaRepositorio.update({ id }, data);
-        return this.turmaRepositorio.findOne({ id });
+        return turma;
     }
 
     async destroy(id: string) {
+        const turma = await this.turmaRepositorio.findOne({ id });
+        if (!turma) {
+            throw new HttpException('Not found', HttpStatus.NOT_FOUND);
+        }
         await this.turmaRepositorio.delete({ id });
-        return { deleted: true };
+        return turma;
     }
 }
