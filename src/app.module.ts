@@ -10,6 +10,7 @@ import { TurmaModule } from './turma/turma.module';
 import { MatriculaModule } from './matricula/matricula.module';
 import { HttpErrorFilter } from './shared/http-error.filter';
 import { LoggingInterceptor } from './shared/logging.interceptor';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { LoggingInterceptor } from './shared/logging.interceptor';
     AlunoModule,
     TurmaModule,
     MatriculaModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [
