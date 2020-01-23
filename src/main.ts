@@ -13,6 +13,7 @@ async function bootstrap() {
     .setTitle('API ESCOLA')
     .setDescription('Sistema Escolar')
     .setVersion('1.0')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api', app, document);
